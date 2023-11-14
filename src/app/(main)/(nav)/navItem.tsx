@@ -4,12 +4,18 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 type Route = {
-    label: string;
-    icon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
-    href: string;
-  };
+  label: string;
+  icon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
+  activeIcon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
+  href: string;
+};
 
-const NavItem: FC<Route> = ({ href, icon: Icon, label }) => {
+const NavItem: FC<Route> = ({
+  href,
+  icon: Icon,
+  activeIcon: ActiveIcon,
+  label,
+}) => {
   const pathname = usePathname();
   const active = pathname === href;
 
@@ -24,14 +30,11 @@ const NavItem: FC<Route> = ({ href, icon: Icon, label }) => {
           }
         )}
       >
-        <Icon
-          className={cn(
-            "w-6 h-6 transition-all group-active:scale-90 group-hover:scale-110",
-            active
-              ? "text-inherit"
-              : "text-transparent stroke-2 stroke-black group-active:stroke-gray-400"
-          )}
-        />
+        {active ? (
+          <ActiveIcon className="w-6 h-6 group-active:scale-90 group-hover:scale-110 group-active:stroke-gray-400"></ActiveIcon>
+        ) : (
+          <Icon className="w-6 h-6 group-active:scale-90 group-hover:scale-110 group-active:stroke-gray-400" />
+        )}
         <span className="hidden lg:block">{label}</span>
       </Link>
     </li>
