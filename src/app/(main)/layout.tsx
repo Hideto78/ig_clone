@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren } from "react";
-import NavigationMenu from "./(nav)/navigationMenu";
+import NavigationMenu from "./components/sidebar_menu/navigation_menu";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

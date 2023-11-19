@@ -1,9 +1,10 @@
 "use client";
 
 import React, { FC } from "react";
-import NavItem from "./navItem";
-import ProfileItem from "./profileItem";
-import MoreItem from "./moreItem";
+import NavItem from "./nav_item";
+import ProfileItem from "./profile_item";
+import CreateItem  from "./create_item";
+import MoreItem from "./more_item";
 import LogoSVG from "@/assets/logo.svg";
 import Logo from "@/assets/logo-2.svg";
 import HomeIcon from "@/assets/icons/home.svg";
@@ -19,6 +20,7 @@ import MessagesActiveIcon from "@/assets/icons/messages-active.svg";
 import NotificationsIcon from "@/assets/icons/notifications.svg";
 import NotificationsActiveIcon from "@/assets/icons/notifications-active.svg";
 import CreateIcon from "@/assets/icons/create.svg";
+import Link from "next/link";
 
 type Props = {};
 
@@ -29,7 +31,13 @@ const NavigationMenu: FC<Props> = () => {
         <LogoSVG className="h-7 my-10 mx-3 hidden lg:block" />
         <Logo className="h-6 my-10 mx-3 lg:hidden" />
         <ul className="w-full flex flex-row sm:flex-col gap-2">
-          <NavItem key="/" label="Home" icon={HomeIcon} activeIcon={HomeActiveIcon} href="/" />
+          <NavItem
+            key="/"
+            label="Home"
+            icon={HomeIcon}
+            activeIcon={HomeActiveIcon}
+            href="/"
+          />
           <NavItem
             key="/search"
             label="Search"
@@ -44,7 +52,13 @@ const NavigationMenu: FC<Props> = () => {
             activeIcon={ExploreActiveIcon}
             href="/explore"
           />
-          <NavItem key="/reels" label="Reels" icon={ReelsIcon} activeIcon={ReelsActiveIcon} href="/reels" />
+          <NavItem
+            key="/reels"
+            label="Reels"
+            icon={ReelsIcon}
+            activeIcon={ReelsActiveIcon}
+            href="/reels"
+          />
           <NavItem
             key="/messages"
             label="Messages"
@@ -59,15 +73,10 @@ const NavigationMenu: FC<Props> = () => {
             activeIcon={NotificationsActiveIcon}
             href="/notifications"
           />
-          <NavItem
-            key="/create"
-            label="Create"
-            icon={CreateIcon}
-            activeIcon={CreateIcon}
-            href="/create"
-          />
-          <ProfileItem />
+          
         </ul>
+        <CreateItem />
+          <ProfileItem />
         <MoreItem />
       </nav>
     </aside>

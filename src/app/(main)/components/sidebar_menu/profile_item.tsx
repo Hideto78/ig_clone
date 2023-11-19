@@ -11,11 +11,10 @@ const ProfileItem: FC<Props> = () => {
     const active = pathname === "/profile";
   
     return (
-      <li key="/profile">
         <Link
           href="/profile"
           className={cn(
-            "p-3 flex flex-row rounded-md gap-4 hover:bg-accent hover:text-accent-foreground group active:text-gray-400",
+            "w-full my-1 p-3 flex flex-row rounded-md gap-4 hover:bg-accent hover:text-accent-foreground group active:text-gray-400",
             {
               "font-bold": active,
             }
@@ -33,7 +32,6 @@ const ProfileItem: FC<Props> = () => {
           />
           <span className="hidden lg:block">Profile</span>
         </Link>
-      </li>
     );
   };
 
