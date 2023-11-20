@@ -1,39 +1,41 @@
-import React, { FC, useState } from "react";
 import CreateIcon from "@/assets/icons/create.svg";
+import DragIcon from "@/assets/icons/drag_item.svg";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
-import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
-import DragIcon from "@/assets/icons/drag_item.svg";
-
+import { Separator } from "@/components/ui/separator";
+import { XIcon } from "lucide-react";
+import { FC, useRef } from "react";
 
 const CreateItem: FC = () => {
+  const contentRef = useRef<HTMLDivElement>(null);
+
   return (
     <AlertDialog>
       <AlertDialogTrigger className="w-full p-3 my-1 flex flex-row rounded-md gap-4 hover:bg-accent hover:text-accent-foreground group active:text-gray-400">
         <CreateIcon className="w-6 h-6 group-active:scale-90 group-hover:scale-110 group-active:stroke-gray-400"></CreateIcon>
         <span className="hidden lg:block">Create</span>
       </AlertDialogTrigger>
-      <AlertDialogContent className="p-0">
+      <AlertDialogContent className="p-0 max-w-4xl sm:rounded-xl">
+        <AlertDialogCancel className="absolute top-1 right-1 w-8 h-8 p-0 rounded-full">
+          <XIcon className="w-4 h-4" />
+        </AlertDialogCancel>
         <AlertDialogHeader className="items-center">
           <AlertDialogTitle className="text-base mt-2">
             Create new post
           </AlertDialogTitle>
-          <Separator/>
-          <AlertDialogDescription className="flex flex-col text-black items-center gap-4 py-40">
-            <DragIcon className="w-24 h-18"/>
+          <Separator />
+          <div className="flex flex-col text-black items-center gap-4 w-full aspect-square justify-center">
+            <DragIcon className="w-24 h-18" />
             <span className="text-lg">Drag photos and videos here</span>
-            <AlertDialogAction>Select from computer</AlertDialogAction>
-          </AlertDialogDescription>
+            <Button>Select from computer</Button>
+          </div>
         </AlertDialogHeader>
       </AlertDialogContent>
     </AlertDialog>

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import LogoSVG from "@/assets/logo.svg";
+import LogoSVG from "@/assets/text-logo.svg";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "lucide-react";

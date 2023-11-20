@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from "react";
-import NavigationMenu from "./components/sidebar_menu/navigation_menu";
+import SidebarMenu from "./components/sidebar_menu";
 
 const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="flex fkex-c sm:flex-row">
-      <NavigationMenu />
+      <SidebarMenu />
       <main className="flex-1">{children}</main>
     </div>
   );

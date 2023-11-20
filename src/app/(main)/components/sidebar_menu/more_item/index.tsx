@@ -1,6 +1,5 @@
 "use client";
-import React, { FC, SVGProps, useState } from "react";
-import Link from "next/link";
+import React, { FC, useState } from "react";
 import MoreIcon from "@/assets/icons/more.svg";
 import SettingsIcon from "@/assets/icons/setting.svg";
 import ActivityIcon from "@/assets/icons/activity.svg";
@@ -15,12 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronLeft } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
-
-type Route = {
-  label: string;
-  icon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
-  href: string;
-};
+import LinkItem from "./link-item";
 
 const MoreItem: FC = () => {
   const [switched, setswitched] = useState(false);
@@ -56,19 +50,19 @@ const MoreItem: FC = () => {
             </>
           ) : (
             <>
-              <DropMenuItem
+              <LinkItem
                 href="/settings"
                 icon={SettingsIcon}
                 label="Settings"
               />
-              <DropMenuItem
+              <LinkItem
                 href="/activity"
                 icon={ActivityIcon}
                 label="Your activity"
               />
-              <DropMenuItem href="/saved" icon={SavedIcon} label="Saved" />
+              <LinkItem href="/saved" icon={SavedIcon} label="Saved" />
               <DropdownMenuItem
-                className="m-1 rounded-lg hover:bg-accent hover:text-accent-foreground active:text-gray-400 p-4 pl-4 flex flex-row gap-4 justify-between"
+                className="m-1 rounded-lg hover:bg-accent hover:text-accent-foreground active:text-gray-400 p-4 flex flex-row gap-4 justify-between"
                 onSelect={(e) => {
                   e.preventDefault();
                   setswitched(true);
@@ -78,27 +72,14 @@ const MoreItem: FC = () => {
                 Switch appearance
               </DropdownMenuItem>
               <DropdownMenuSeparator className="h-1" />
-              <DropdownMenuItem className="m-1 rounded-lg hover:bg-accent hover:text-accent-foreground active:text-gray-400">
-                <button className="w-full p-2 flex rounded-md justify-start">
-                  Log out
-                </button>
+              <DropdownMenuItem className="m-1 h-[50px] px-4 rounded-lg hover:bg-accent hover:text-accent-foreground active:text-gray-400">
+                Log out
               </DropdownMenuItem>
             </>
           )}
         </DropdownMenuContent>
       </DropdownMenu>
     </>
-  );
-};
-
-const DropMenuItem: FC<Route> = ({ href, icon: Icon, label }) => {
-  return (
-    <DropdownMenuItem className="m-1 rounded-lg hover:bg-accent hover:text-accent-foreground active:text-gray-400">
-      <Link href={href} className="w-full p-2 flex flex-row rounded-md gap-4">
-        <Icon className="w-5 h-5"></Icon>
-        {label}
-      </Link>
-    </DropdownMenuItem>
   );
 };
 

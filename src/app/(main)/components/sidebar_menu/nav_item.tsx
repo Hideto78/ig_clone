@@ -5,16 +5,16 @@ import { cn } from "@/lib/utils";
 
 type Route = {
   label: string;
+  href: string;
   icon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
   activeIcon: FC<SVGProps<HTMLOrSVGElement> & { title?: string | undefined }>;
-  href: string;
 };
 
 const NavItem: FC<Route> = ({
   href,
+  label,
   icon: Icon,
   activeIcon: ActiveIcon,
-  label,
 }) => {
   const pathname = usePathname();
   const active = pathname === href;

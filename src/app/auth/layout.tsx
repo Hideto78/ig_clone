@@ -5,6 +5,7 @@ import Image from "next/image";
 const AuthLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <main className="mx-auto flex flex-col items-center justify-between min-h-screen">
+      <div />
       <article className="flex flex-row justify-center py-8">
         <div className="justify-end relative w-[468px] hidden lg:flex">
           <Image
