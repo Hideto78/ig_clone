@@ -1,5 +1,5 @@
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
-import { Link } from "lucide-react";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 import { FC, SVGProps } from "react";
 
 type Props = {
